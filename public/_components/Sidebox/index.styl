@@ -1,0 +1,78 @@
+.Sidebox
+	position: relative;
+	border 1px solid $color-brand
+	// background: $color-mid
+	margin-bottom: 4rem
+	+above(md)
+		margin-bottom: 0
+
+.Sidebox-content
+	padding: 1.5rem 2rem 2rem
+
+.Sidebox-header
+	// background: $color-brand
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid alpha($color-brand, 0.22)
+
+.Sidebox-title
+	text-transform: uppercase;
+	font-size: 0.875rem
+	padding: 1rem 1rem 1rem 2rem
+	font-weight: 500
+	line-height: 1.25rem
+	color: $color-brand
+
+.Sidebox-icon
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.5rem
+	height: auto
+	position: relative;
+	color: $color-body
+	background: $color-brand
+	:after
+		content: ''
+		position: absolute;
+		top: 100%
+		width: 100%
+		background: $color-brand
+		z-index: 3
+		height: 1px
+	+above(md)
+		flex-shrink: 0
+		width: 3rem
+		height: 3rem
+		right: 0rem
+		top: 0rem
+		border-bottom-left-radius: 100px
+		svg
+			top: -0.25rem
+			right: -0.25rem
+		:after
+			display: none;
+	+above(lg)
+		width: 3rem
+		height: 3rem
+		right: -1.5rem
+		top: -1.5rem
+		border-radius: 400px
+		position: absolute;
+		svg
+			top: auto
+			right auto
+	svg
+		position: relative;
+		height: 1rem
+		stroke-width 1.125
+
+.Sidebox-description
+	color: alpha($color-font, 0.88)
+	line-height: 1.5rem
+	margin-bottom: 1rem
+
+.Sidebox-subdescription
+	font-size: 0.75rem
+	color: alpha($color-font, 0.44)
+	line-height: 1rem

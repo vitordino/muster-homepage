@@ -2,6 +2,8 @@ mixin Section(title, description)
 	section.Section&attributes(attributes)
 		.container
 			.Section-header
-				h2.Section-title=title
-				p.Section-description=description
+				if title
+					h2.Section-title=title
+				if description
+					p.Section-description=description
 			block

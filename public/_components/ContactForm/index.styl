@@ -1,9 +1,3 @@
-.ContactForm
-	margin-top: 4rem
-	+above(md)
-		margin-top: 3em
-	+above(lg)
-		max-width: 60%
 
 .ContactForm-section
 	position relative
@@ -14,3 +8,16 @@
 
 @import './input.styl'
 @import './button.styl'
+
+
+.Contact-layout
+	margin-top: 4rem
+	+above(md)
+		margin-top: 6em
+		flex-direction: row-reverse;
+		justify-content:space-between;
+
+.Contact-sidebox
+	// border 1px solid $color-brand
+	background: $color-mid
+	padding: 2rem 2.5rem

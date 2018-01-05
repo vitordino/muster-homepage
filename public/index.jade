@@ -4,18 +4,100 @@ include /_components/index
 
 main
 	+Section('Where we can add value', 'We support companies through 7 main levers:')#value
+		.value-cards.g-row
+			.g-xs-12.g-md-6: +Value('Team Building', 'users')
+				:markdown
+					Designing and **recruiting** for a startup’s most important asset, its
+					human capital base. Our long-term goal is to ensure that the best
+					people can consistently find their best place.
+
+			.g-xs-12.g-md-6: +Value('Operations', 'activity')
+				:markdown
+					Enhancing administrative, accounting, legal, and technological
+					capabilities via a more dynamic offer: Expert As A Service (AdminaaS,
+					CFOaaS, LegalaaS, CTOaaS)
+
+			.g-xs-12.g-md-6: +Value('Perspective', 'crosshair')
+				:markdown
+					Strategy, competitive positioning, defining the target market, and
+					scoping the product. Our team has significant experience serving on
+					the boards of both public and private companies. We leverage these to
+					provide strategic counsel ,and frank feedback.
+
+			.g-xs-12.g-md-6: +Value('Skill Building', 'layers')
+				:markdown
+					Building the right skills, especially for senior management. Over
+					time, we collected a portfolio of executives that lead world class
+					technology companies. We think that they are the best ones to perform
+					a Investor due diligence report. We also use coaching as a key lever
+					with our own team or through outside partners. For example, we
+					provide direct marketing coaching or on how to pitch investors.
+
+			.g-xs-12.g-md-6: +Value('Costumer Development', 'user-plus')
+				:markdown
+					Identifying and gaining access to the **right customers**. We have
+					relationships with different large global corporations. We maintain a
+					database of these corporations’ priority needs -- allowing us to
+					identify early clients for companies.
+
+			.g-xs-12.g-md-6: +Value('Analysis', 'bar-chart-2')
+				:markdown
+					How entrepreneurs measure, understand, and report the **performance**
+					of their early-stage companies. Because or our experience we have we
+					have a larger data set than most entrepreneurs of performance. Based
+					on our data set, we help entrepreneurs measure, understand, and report
+					their performance.
+
+			.g-xs-12.g-md-6: +Value('Network', 'globe')
+				:markdown
+					Designing and **recruiting** for a startup’s most important asset, its
+					human capital base. Our long-term goal is to ensure that the best
+					people can consistently find their best place.
+
+
 
 	+Section('Consultancy Packages')#consultancy.-mid
+		.consultancy-cards.g-row
 
-		+Card('Business Development')
-			ul
+			.g-xs-12.g-md-6.g-lg-4: +Card('Business Development')
+				ul
+					li Lead Generation
+					li Sales Representative 
+					li Business Support
 
-				li Lead Generation
-				li Sales Representative 
-				li Business Support
+			.g-xs-12.g-md-6.g-lg-4: +Card('Strategy')
+				ul
+					li Mentoring
+					li Market Research
+					li Competitive positioning,
+					li Product Scope/Fit
+					li Future Trends
+
+			.g-xs-12.g-md-6.g-lg-4: +Card('Talent')
+
+			.g-xs-12.g-md-6.g-lg-4: +Card('Funding')
+				ul
+					li Connecting startups with Capital
+					li Business Plan Review
+					li Due Diligence
+					li Pitch Coach
 
 
-	+Section("Contact")#contact
-		+ContactForm()
+			.g-xs-12.g-md-6.g-lg-4: +Card('Deal Flow')
+				ul
+					li For Corporations
+					li Accelerator
+					li Angels and VCs
+
+			.g-xs-12.g-md-6.g-lg-4: +Card('Event Growth')
+
+
+	+Section('Contact', 'By partnering with Muster, your company will receive constant attention, even when yours is pulled elsewhere.')#contact
+		.g-row.Contact-layout
+			.g-xs-12.g-md-4.g-lg-4
+				+Sidebox
+
+
+			.g-xs-12.g-md-7.g-lg-7: +ContactForm()
 
 +Footer()

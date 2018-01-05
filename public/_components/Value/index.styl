@@ -1,0 +1,51 @@
+.Value
+	margin-top: 1.25rem
+	margin-bottom: 4rem
+	background: $color-body
+	flex 1
+	width: 100%
+	position: relative;
+
+	.Value-header
+		display: flex;
+		align-items: center;
+
+	.Value-title
+		color: alpha($color-brand, 0.88)
+		font-weight: 500
+		line-height: $size-2
+		font-size: $size-3
+		position: relative;
+		z-index: 2
+
+	.Value-icon
+		color: $color-brand
+		height: 1rem
+		margin-right: 0.75rem
+		display: flex;
+		+above(lg)
+			position: absolute;
+			top: -1.5rem
+			left: -1.75rem
+			height: 3.75rem
+			opacity: 0.06
+			svg
+				stroke-width 1.5
+		svg
+			width: auto
+			opacity: 0.88
+			height: 100%
+
+
+	.Value-description
+		color: alpha($color-font, 0.66)
+		margin-top: 1rem
+		font-size: $size-4
+		line-height: $size-1
+		strong
+			font-weight: inherit;
+			color: $color-brand
+		+above(md)
+			max-width: 90%
+		+above(lg)
+			font-size: $size-3

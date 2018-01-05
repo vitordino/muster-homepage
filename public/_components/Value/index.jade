@@ -1,0 +1,10 @@
+mixin Value(title, icon)
+	.Value.reveal-js
+		.Value-header
+			.Value-icon
+				+FeatherIcon(icon)
+			h3.Value-title=title
+
+		if block
+			.Value-description
+				block

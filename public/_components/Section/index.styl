@@ -1,15 +1,15 @@
 .Section
 	overflow: hidden;
-	padding-top: 3rem
+	padding-top: 4rem
 	padding-bottom: 5rem
 	+above(lg)
 		padding-top: 6rem
 		padding-bottom: 12em
 
 .Section-header
-	margin-bottom: 2.5rem
+	margin-bottom: 1.5rem
 	+above(lg)
-		margin-bottom: 4rem
+		margin-bottom: 2.5rem
 
 .Section-title
 	color: $color-brand
@@ -21,11 +21,13 @@
 		line-height: 2rem
 
 .Section-description
+	max-width: 32rem
 	font-size: $size-4
-	line-height: $size-4
+	line-height: $size-1
 	opacity 0.88
-	margin-top: 0.5rem
+	margin-top: 1rem
+	margin-bottom: 2rem
 	letter-spacing: -0.25px
 	margin-bottom: 1.75rem
-	+above(lg)
-		line-height: $size-1
+	+above(md)
+		font-size: $size-3

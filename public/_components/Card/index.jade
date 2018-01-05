@@ -1,5 +1,6 @@
 mixin Card(title)
-	.Card
-		.Card-title=title
-		.Card-description
-			block
+	.Card.reveal-js
+		h3.Card-title=title
+		if block
+			.Card-description
+				block
