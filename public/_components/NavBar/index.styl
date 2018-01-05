@@ -20,9 +20,26 @@
 	padding-bottom: 1rem
 
 
-.NavBar-logo, .Footer-logo
+.NavBar-left, .Footer-logo
 	display: block;
+	position: relative;
 	padding: 0.5rem 0
+
+.NavBar-left
+	:hover, :focus
+		.Navbar-definition
+			color: alpha($color-body, 0.66)
+			transform: translateY(-1rem);
+			opacity: 1
+
+.Navbar-definition
+	width: 14em
+	font-size: 0.875rem
+	position: absolute;
+	top: 100%
+	opacity: 0
+	transition: 0.35s all
+	transform: translateY(-0.75rem);
 
 .NavBar-links
 	display flex

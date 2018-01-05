@@ -1,8 +1,12 @@
 mixin NavBar({social, tag = 'nav'} = {})
 	#{tag}.NavBar&attributes(attributes)
 		.NavBar-container.container
-			a.NavBar-logo(href='/')
-				include /assets/images/logo.svg
+			a.NavBar-left(href='/')
+				.NavBar-logo
+					include /assets/images/logo.svg
+				.Navbar-definition
+					span.-fade verb.
+					span  to collect or assemble
 			ul.NavBar-links
 				li.-md-hide: a(href='/#value') value
 				li.-md-hide: a(href='/#consultancy') consultancy
