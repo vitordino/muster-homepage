@@ -1,0 +1,52 @@
+include /_components/index
+
+doctype
+
+html(lang='en')
+	head
+		if site.title && site.description
+			title #{site.title} – #{site.description}
+		else
+			title #{site.title}
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(href='/main.css', rel='stylesheet')
+		script(async src='https://www.googletagmanager.com/gtag/js?id=UA-105778718-2')
+		script document.documentElement.className += ' js'
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-105778718-2');
+
+
+	body
+
+		!= yield
+
+		//- ScrollReveal
+		script(src="/scrollreveal.min.js")
+		script.
+			window.sr = ScrollReveal({
+				duration: 16*56,
+				scale: 1,
+				mobile: false,
+				viewFactor: 0,
+				viewOffset: {top: 96, right: 0, bottom: 96, left: 0},
+				easing: 'cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+			})
+			sr.reveal('.Card')
+
+		//- textarea autosize
+		script(src='/autosize.min.js')
+		script.
+			var $textarea = document.querySelector('textarea')
+			if($textarea){
+				$textarea.addEventListener('focus', function(){
+					autosize($textarea)
+				})
+				$textarea.style.display = 'none'
+				autosize($textarea)
+				$textarea.style.display = ''
+				autosize.update($textarea)
+			}

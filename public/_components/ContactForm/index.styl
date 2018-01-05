@@ -1,0 +1,16 @@
+.ContactForm
+	margin-top: 4rem
+	+above(md)
+		margin-top: 3em
+	+above(lg)
+		max-width: 60%
+
+.ContactForm-section
+	position relative
+	+above(md)
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+@import './input.styl'
+@import './button.styl'

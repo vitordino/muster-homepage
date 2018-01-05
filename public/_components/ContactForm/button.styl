@@ -1,0 +1,57 @@
+.ContactForm
+	.ghost-button
+		appearence none
+		border-radius: 0
+		border 1px solid currentColor
+		background: none
+		font-size: 0.875rem
+		font-weight: 500
+		letter-spacing: 0.25px
+		cursor pointer
+		padding: 0 0 0 2em
+		padding-right: 0
+		padding-top: 0
+		padding-bottom: 0
+		display: inline-flex;
+		align-items: center;
+		justify-content:space-between;
+		width: 100%
+		user-select: none;
+		+above(md)
+			width: auto;
+		span
+			margin-top: 2px
+			+above(md)
+				margin-top: 3px
+		.icon-container
+			margin-left: 2rem
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: currentColor
+			padding: 1rem
+			+above(md)
+				margin-left: 1rem
+				background: $color-body
+			svg
+				color: $color-body
+				+above(md)
+					margin-top: 2px
+					color: currentColor
+
+	.ContactForm-form:invalid .ghost-button
+		cursor: not-allowed
+		color mix($color-font, $color-body, 40%)
+	.ContactForm-form:valid .ghost-button
+		color: $color-brand
+		cursor: pointer;
+		:hover, :focus, :active
+			background-color: $color-brand
+			color: $color-body
+			border-color: $color-brand
+			.icon-container
+				background-color: $color-brand
+				color: $color-body
+				border-color: $color-brand
+			svg
+				color: currentColor

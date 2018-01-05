@@ -1,0 +1,59 @@
+breakpoints = {
+	md: 48rem,
+	lg: 80rem,
+}
+
+
+above(breakpoint)
+	if breakpoints[breakpoint] > 0
+		@media only screen and (min-width: breakpoints[breakpoint])
+			{block}
+	else
+		{block}
+
+below(breakpoint)
+	@media only screen and (max-width: (breakpoints[breakpoint] - 1px))
+		if block
+			{block}
+
+between(breakpoint_1, breakpoint_2)
+	@media only screen and (min-width: breakpoints[breakpoint_1]) and (max-width: (breakpoints[breakpoint_2] - 1px))
+		if block
+			{block}
+
+.container
+	margin-left: auto
+	margin-right: auto
+	display: block
+	width: 100%
+	max-width: 72.5rem
+	padding: 0 1rem
+	+above(lg)
+		padding: 0
+		max-width: 72rem
+
+
+.g-row
+	display flex
+	flex-direction row
+	flex-wrap wrap
+	box-sizing border-box
+	align-items flex-start
+	margin-left: (2.5rem * -0.5)
+	margin-right: (2.5rem * -0.5)
+
+$col-paddings
+	padding-left (2.5rem / 2)
+	padding-right (2.5rem / 2)
+
+for breakpoint in breakpoints
+	for num in (0..12)
+		.g-{breakpoint}-{num}
+			@extend $col-paddings
+
+	+above(breakpoint)
+		for num in (0..12)
+			.g-{breakpoint}-{num}
+				box-sizing border-box
+				flex-shrink 0
+				width: ((100/12*num))%

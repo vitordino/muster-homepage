@@ -1,0 +1,26 @@
+{
+  "name": "muster-homepage",
+  "version": "1.0.0",
+  "description": "homepage for musterventures.com",
+  "scripts": {
+    "start": "harp-scripts start",
+    "watch": "harp-scripts watch",
+    "dev": "harp-scripts watch",
+    "test": "harp-scripts test",
+    "compile": "harp-scripts compile"
+  },
+  "author": "Vitor Dino <vitor@kunstdesign.com.br>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "character-parser": "^2.2.0",
+    "feather-icons": "^4.5.0",
+    "fs-readdir-recursive": "^1.0.0",
+    "harp": "^0.24.0",
+    "harp-scripts": "^0.1.0",
+    "lodash": "^4.17.4",
+    "polished": "^1.9.0",
+    "pug-lexer": "^3.1.0",
+    "pug-parser": "^4.0.0"
+  }
+}

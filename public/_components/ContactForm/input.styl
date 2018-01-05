@@ -1,0 +1,75 @@
+.ContactFormInput
+	flex: 1
+	position: relative;
+	display: block;
+	margin-bottom: 1em
+	+above(md)
+		& + .ContactFormInput
+			margin-left: 2em
+
+.ContactFormInput-input
+	position relative
+	appearence: none
+	border-radius: 0
+	resize: vertical;
+	min-height: 2.75em
+	margin-bottom 2rem
+	background-color transparent
+	padding 10px 8px 6px 0px
+	display inline-block
+	width 100%
+	max-width 100%
+	border none
+	border-bottom 1px solid currentColor
+	transition 0.3s ease border
+	color $color-font
+	&:focus
+		outline none
+	&:focus
+	&:active
+	&:valid
+		border-color $color-brand
+	&:invalid
+		border-color $color-error
+	&:placeholder-shown
+		border-color alpha($color-font, 0.2)
+	& + .ContactFormInput-label
+		left 0
+		display block;
+		width 100%;
+		position absolute
+		pointer-events none
+		transition 0.2s ease all
+		color alpha($color-font, 0.6)
+		top -1em
+		font-size 14px
+		+above(md)
+			top -1.25em
+			margin-bottom 4rem
+	&:invalid:not(:placeholder-shown) + .ContactFormInput-label
+		color $color-error !important
+	&[required] + .ContactFormInput-label:after
+		content '*'
+		position absolute;
+		right 0
+		top 0.5em
+		font-family: sans-serif;
+		font-size 1.25em
+		line-height 1.25em
+		color transparent
+	&:placeholder-shown + .ContactFormInput-label
+	&.placeholder-shown + .ContactFormInput-label
+		// [TODO]: IE polyfill
+		top 10px
+		font-size 1rem
+		&:after
+			color alpha($color-font, 0.4)
+
+// [HACK]
+.ContactFormInput-input:-webkit-autofill
+	-webkit-box-shadow: 0 0 0 30px $color-body inset
+	-webkit-box-shadow: 0 0 0 30px $color-body inset
+	-webkit-text-fill-color: $color-font;
+	&::selection
+		color: $color-body
+		-webkit-text-fill-color: $color-body

@@ -1,0 +1,22 @@
+mixin ContactFormInput({name, label, type = 'text', textarea = false})
+	-const tag = textarea ? 'textarea' : 'input'
+	-const _type = tag === 'input' ? type : null
+	-const rows = tag === 'textarea' ? '1' : null
+	.ContactFormInput
+		#{tag}.ContactFormInput-input(id=name name=name rows=rows type=_type placeholder=' ' required)
+		label.ContactFormInput-label(for=name)=(label || name)
+
+mixin ContactForm()
+	.ContactForm
+		form.ContactForm-form(name='contact' action='action' method='post' data-netlify='true' data-netlify-honeypot='hid')
+			input.-display-none(name='hid')
+			.ContactForm-section
+				+ContactFormInput({name: 'name', label: 'name'})
+				+ContactFormInput({name: 'email', label: 'email', type: 'email'})
+			.ContactForm-section
+				+ContactFormInput({textarea: true, name: 'message', label: 'message'})
+			.-ta-right
+				button.ghost-button(type='submit')
+					span send
+					.icon-container
+						+FeatherIcon('arrow-right')

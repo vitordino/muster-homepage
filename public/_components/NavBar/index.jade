@@ -1,0 +1,19 @@
+mixin NavBar({social, tag = 'nav'} = {})
+	#{tag}.NavBar&attributes(attributes)
+		.NavBar-container.container
+			a.NavBar-logo(href='/')
+				include /assets/images/logo.svg
+			ul.NavBar-links
+				li.-md-hide: a(href='/#value') value
+				li.-md-hide: a(href='/#consultancy') consultancy
+				li: a(href='/#contact') contact
+
+
+mixin Footer()
+	footer.Footer
+		.container.Footer-container
+			a.Footer-logo(href='/')
+				include /assets/images/logo.svg
+			ul.Footer-links
+				li: a(href='tel:+34628210638') +34 628 210 638
+				li: a(href='mailto:contact@musterventure.com') contact@musterventure.com

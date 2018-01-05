@@ -1,0 +1,16 @@
+{
+	"globals": {
+		"site": {
+			"title": "Muster Ventures",
+			"description": "the best minds and capital for tech-driven companies",
+			"email": "hello@musterventures.com",
+			"facebook": null,
+			"instagram": null,
+			"twitter": null,
+			"whatsapp": null,
+			"github": null,
+			"gitlab": null,
+			"codepen": null
+		}
+	}
+}

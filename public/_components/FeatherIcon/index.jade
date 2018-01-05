@@ -1,0 +1,3 @@
+mixin FeatherIcon(name)
+	- const {icons} = require('feather-icons')
+	!=icons[name].toSvg()
