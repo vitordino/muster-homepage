@@ -1,29 +1,54 @@
+function getPixelRatio(context) {
+	var backingStore = context.backingStorePixelRatio ||
+		context.webkitBackingStorePixelRatio ||
+		context.mozBackingStorePixelRatio ||
+		context.msBackingStorePixelRatio ||
+		context.oBackingStorePixelRatio
+	return (window.devicePixelRatio || 1) / (backingStore || 1)
+}
+
 (function(){
 	var color = '#708986'
 	var speed = 0.005
-
-	var $moebius =  document.querySelector('.moebius')
+	var $hero = document.querySelector('.Hero')
+	var $moebius = document.querySelector('.moebius')
 	if(!$moebius) return
 
 	var $canvas = $moebius.querySelector('canvas')
 	var ctx = $canvas.getContext('2d')
+	var ratio = getPixelRatio(ctx)
+	var isRetina = ratio !== 1
 
-	$canvas.width = $moebius.offsetWidth
-	$canvas.height = $moebius.offsetHeight
+	function setup(){
+		$moebius.style.width = $hero.offsetWidth * ratio + 'px'
+		$moebius.style.height = $hero.offsetHeight * ratio + 'px'
+		$canvas.width = $hero.offsetWidth
+		$canvas.height = $hero.offsetHeight
+		if(isRetina){
+			var scale = 1 / ratio
+			$moebius.style.transform = 'scale(' + scale + ')'
+			$moebius.style.transformOrigin = 'top left'
+		}
+		setEnv()
+	}
+
 	var cw, ch, cy, cx, m, r, v, lw
 	var points = [], triangles = []
 	function setEnv(){
+		$moebius.style.width = $hero.offsetWidth * ratio + 'px'
+		$moebius.style.height = $hero.offsetHeight * ratio + 'px'
 		var _w = $moebius.offsetWidth
 		var _h = $moebius.offsetHeight
 		var _x = Math.min(_w, _h)
 		lw = _h > 400 ? 1.5 : 1
+		lw *= isRetina * 1.5
 		$canvas.width = _w
 		$canvas.height = _h
 		cw = _x
 		ch = _x
 		cx = _w / 2
 		cy = _h / 2
-		m = m || {x: cw / 2.1, y: ch / 2.1}
+		m = m || {x: 400, y: 800}
 		r = Math.min(_w, _h) / (1/(_h/1000))
 		v = -.66 * r
 
@@ -37,14 +62,14 @@
 			var x = (r + .5 * v * Math.cos(.5 * u)) * Math.cos(u)
 			var y = (r + .5 * v * Math.cos(.5 * u)) * Math.sin(u)
 			var z = .75 * v * Math.sin(.5 * u)
-			var point = new Point(x, y, z)
+			var point = new Point(x, y, z, ratio)
 			points.push(point)
 
 			var _u = u + 2 * Math.PI
 			var _x = (r + .5 * v * Math.cos(.5 * _u)) * Math.cos(_u)
 			var _y = (r + .5 * v * Math.cos(.5 * _u)) * Math.sin(_u)
 			var _z = .5 * v * Math.sin(.5 * _u)
-			var _point = new Point(_x, _y, _z)
+			var _point = new Point(_x, _y, _z, ratio)
 			points.push(_point)
 		}
 
@@ -88,8 +113,8 @@
 		}
 	}
 
-	setEnv()
+	setup()
 	requestId = window.requestAnimationFrame(Draw)
-	$canvas.addEventListener('mousemove', handleMouseMove, false)
+	window.addEventListener('mousemove', handleMouseMove, false)
 	window.addEventListener('resize', setEnv, false)
 })()

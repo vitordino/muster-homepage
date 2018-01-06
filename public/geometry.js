@@ -1,10 +1,14 @@
 (function(namespace){
-	function Point(x, y, z){
-		this.x = x
-		this.y = y
-		this.z = z
+	function Point(x, y, z, _ratio){
+		var ratio = _ratio || 1
 
-		this.fl = 350; // focal length
+		this.x = x / ratio
+		this.y = y / ratio
+		this.z = z / ratio
+
+		// focal length
+		this.fl = 350 * ratio;
+
 		// vanishing point
 		this.vpX = 0
 		this.vpY = 0

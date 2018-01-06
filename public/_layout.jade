@@ -25,7 +25,7 @@ html(lang='en')
 		!= yield
 
 		//- ScrollReveal
-		script(src="/scrollreveal.min.js")
+		script(src='/scrollreveal.min.js')
 		script.
 			window.sr = ScrollReveal({
 				duration: 16*56,
@@ -37,9 +37,11 @@ html(lang='en')
 			})
 			sr.reveal('.reveal-js')
 
-		//- textarea autosize
+		//- moebius strip
 		script(src='/geometry.js')
 		script(src='/moebius.js')
+
+		//- textarea autosize
 		script(src='/autosize.min.js')
 		script.
 			var $textarea = document.querySelector('textarea')
