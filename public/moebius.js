@@ -1,5 +1,5 @@
 (function(){
-	var color = '#fff'
+	var color = '#708986'
 	var rad = Math.PI / 180;
 	var speed = 0.005;
 
@@ -12,12 +12,13 @@
 	canvas.width = $moebius.offsetWidth
 	canvas.height = $moebius.offsetHeight;
 	var scl = 1
-	var cw, ch, cy, cx, m, r, v
+	var cw, ch, cy, cx, m, r, v, lw
 	var points = [], triangles = []
 	function setEnv(){
 		var _w = $moebius.offsetWidth
 		var _h = $moebius.offsetHeight
 		var _x = Math.min(_w, _h)
+		lw = _h > 400 ? 1.5 : 1
 		canvas.width = _w
 		canvas.height = _h
 		cw = _x
@@ -147,6 +148,7 @@
 
 		this.draw = function() {
 			ctx.save();
+			ctx.lineWidth = lw;
 			ctx.strokeStyle = color;
 			ctx.beginPath();
 			ctx.moveTo(this.pointC.getScreenX(), this.pointC.getScreenY());
