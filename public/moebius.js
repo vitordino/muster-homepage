@@ -52,7 +52,6 @@
 
 		for (var i = 0; i <= points.length - 2; i += 2) {
 			var v1 = points[i];
-			var v2 = points[i + 1];
 			if (i == points.length - 2) {
 				var v3 = points[1+i];
 				var v4 = points[i];
@@ -60,13 +59,8 @@
 				var v3 = points[i];
 				var v4 = points[i + 1];
 			}
-
-			var t = new Triangle(v1, v4, v2);
-			var _t = new Triangle(v1, v3, v4);
-
+			var t = new Triangle(v1, v3, v4);
 			triangles.push(t);
-			triangles.push(_t);
-
 		}
 
 		for (var i = 0; i < points.length; i++) {
