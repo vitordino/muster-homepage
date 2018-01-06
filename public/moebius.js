@@ -106,10 +106,10 @@ function getPixelRatio(context) {
 	}
 
 	function handleMouseMove(evt){
-		var rect = $canvas.getBoundingClientRect()
+		var rect = $hero.getBoundingClientRect()
 		m = {
-			x: Math.round(evt.clientX - rect.left),
-			y: Math.round(evt.clientY - rect.top),
+			x: Math.round((evt.clientX - rect.left) * ratio),
+			y: Math.round((evt.clientY - rect.top) * ratio),
 		}
 	}
 
