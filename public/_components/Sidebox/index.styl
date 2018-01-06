@@ -36,6 +36,7 @@
 	position: relative;
 	color: $color-body
 	background: $color-brand
+	flex-shrink: 0
 	:after
 		content: ''
 		position: absolute;
@@ -45,7 +46,6 @@
 		z-index: 3
 		height: 1px
 	+above(md)
-		flex-shrink: 0
 		width: 3rem
 		height: 3rem
 		right: 0rem
