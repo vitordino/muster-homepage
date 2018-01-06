@@ -7,7 +7,7 @@ function getPixelRatio(context) {
 	return (window.devicePixelRatio || 1) / (backingStore || 1)
 }
 
-(function(){
+window.moebius = function(){
 	var color = '#708986'
 	var speed = 0.005
 	var $hero = document.querySelector('.Hero')
@@ -117,4 +117,4 @@ function getPixelRatio(context) {
 	requestId = window.requestAnimationFrame(Draw)
 	$hero.addEventListener('mousemove', handleMouseMove, false)
 	window.addEventListener('resize', setEnv, false)
-})()
+}
