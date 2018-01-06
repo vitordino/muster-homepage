@@ -115,6 +115,6 @@ function getPixelRatio(context) {
 
 	setup()
 	requestId = window.requestAnimationFrame(Draw)
-	window.addEventListener('mousemove', handleMouseMove, false)
+	$hero.addEventListener('mousemove', handleMouseMove, false)
 	window.addEventListener('resize', setEnv, false)
 })()
