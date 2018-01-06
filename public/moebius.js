@@ -8,7 +8,7 @@ function getPixelRatio(context) {
 }
 
 window.moebius = function(){
-	var color = '#708986'
+	var color = '#7A7089'
 	var speed = 0.005
 	var $hero = document.querySelector('.Hero')
 	var $moebius = document.querySelector('.moebius')
