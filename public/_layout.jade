@@ -1,7 +1,6 @@
 include /_components/index
 
 doctype
-
 html(lang='en')
 	head
 		meta(charset='utf-8')
@@ -27,12 +26,18 @@ html(lang='en')
 		script!=`gtag('config', '${site.analytics}')`
 
 	body
-
 		!= yield
+		if process.env.NODE_ENV === 'production'
+			script(src='/bundle.min.js')
+		else
+			script(src='/assets/scripts/geometry.js')
+			script(src='/assets/scripts/moebius.js')
+			script(src='/assets/scripts/scrollreveal.min.js')
+			script(src='/assets/scripts/autosize.min.js')
 
-		//- ScrollReveal
-		script(src='/assets/scripts/scrollreveal.min.js')
 		script.
+			moebius()
+
 			window.sr = ScrollReveal({
 				duration: 16*56,
 				scale: 1,
@@ -43,15 +48,6 @@ html(lang='en')
 			})
 			sr.reveal('.reveal-js')
 
-		//- moebius strip
-		script(src='/assets/scripts/geometry.js')
-		script(src='/assets/scripts/moebius.js')
-		script.
-			moebius()
-
-		//- textarea autosize
-		script(src='/assets/scripts/autosize.min.js')
-		script.
 			var $textarea = document.querySelector('textarea')
 			if($textarea){
 				$textarea.addEventListener('focus', function(){

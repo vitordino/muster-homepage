@@ -7,7 +7,8 @@
     "watch": "harp-scripts watch",
     "dev": "harp-scripts watch",
     "test": "harp-scripts test",
-    "compile": "harp-scripts compile"
+    "uglify": "./uglify.sh 'public/_layout.jade' '/assets/scripts' > www/bundle.min.js",
+    "compile": "harp-scripts compile && npm run uglify"
   },
   "author": "Vitor Dino <vitor@kunstdesign.com.br>",
   "license": "UNLICENSED",
@@ -21,6 +22,7 @@
     "lodash": "^4.17.4",
     "polished": "^1.9.0",
     "pug-lexer": "^3.1.0",
-    "pug-parser": "^4.0.0"
+    "pug-parser": "^4.0.0",
+    "uglify-js": "^3.3.4"
   }
 }
