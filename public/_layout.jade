@@ -17,14 +17,14 @@ html(lang='en')
 
 		meta(name='viewport', content='width=device-width, initial-scale=1')
 		link(href='/main.css', rel='stylesheet')
-		script(async src='https://www.googletagmanager.com/gtag/js?id=UA-105778718-2')
 		script document.documentElement.className += ' js'
-		script.
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'UA-112026228-1');
-
+		if site.analytics
+			script(async src='https://www.googletagmanager.com/gtag/js?id=' + site.analytics)
+			script.
+				window.dataLayer = window.dataLayer || []
+				function gtag(){dataLayer.push(arguments)}
+				gtag('js', new Date())
+				gtag('config', site.analytics)
 
 	body
 
