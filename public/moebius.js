@@ -6,11 +6,11 @@
 	var $moebius =  document.querySelector('.moebius');
 	if(!$moebius) return
 
-	var canvas = $moebius.querySelector('canvas')
-	var ctx = canvas.getContext("2d");
+	var $canvas = $moebius.querySelector('canvas')
+	var ctx = $canvas.getContext("2d");
 
-	canvas.width = $moebius.offsetWidth
-	canvas.height = $moebius.offsetHeight;
+	$canvas.width = $moebius.offsetWidth
+	$canvas.height = $moebius.offsetHeight;
 	var scl = 1
 	var cw, ch, cy, cx, m, r, v, lw
 	var points = [], triangles = []
@@ -19,8 +19,8 @@
 		var _h = $moebius.offsetHeight
 		var _x = Math.min(_w, _h)
 		lw = _h > 400 ? 1.5 : 1
-		canvas.width = _w
-		canvas.height = _h
+		$canvas.width = _w
+		$canvas.height = _h
 		cw = _x
 		ch = _x
 		cx = _w / 2;
@@ -164,7 +164,7 @@
 
 	function Draw() {
 		requestId = window.requestAnimationFrame(Draw);
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.clearRect(0, 0, $canvas.width, $canvas.height);
 		var ax = (m.y - cy) / ch * speed;
 		var ay = (m.x - cx) / cw * speed;
 		for (var i = 0; i < points.length; i++) {
@@ -178,12 +178,12 @@
 	setEnv()
 	requestId = window.requestAnimationFrame(Draw);
 
-	window.addEventListener('mousemove', function(evt) {
-		m = oMousePos(canvas, evt);
+	$canvas.addEventListener('mousemove', function(evt) {
+		m = oMousePos($canvas, evt);
 	}, false);
 
-	function oMousePos(canvas, evt) {
-		var rect = canvas.getBoundingClientRect();
+	function oMousePos($canvas, evt) {
+		var rect = $canvas.getBoundingClientRect();
 		return {
 			x: Math.round(evt.clientX - rect.left),
 			y: Math.round(evt.clientY - rect.top)
