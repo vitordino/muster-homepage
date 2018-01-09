@@ -8,7 +8,7 @@
     "dev": "harp-scripts watch",
     "test": "harp-scripts test",
     "uglify": "./uglify.sh 'public/_layout.jade' '/assets/scripts' > www/bundle.min.js",
-    "compile": "harp-scripts compile && npm run uglify"
+    "compile": "harp-scripts compile && npm run uglify && cp ./public/_redirects ./www/_redirects"
   },
   "author": "Vitor Dino <vitor@kunstdesign.com.br>",
   "license": "UNLICENSED",
