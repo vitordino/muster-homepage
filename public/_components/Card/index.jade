@@ -1,6 +1,6 @@
 mixin Card(title)
-	.Card.reveal-js
+	.g-xs-12.g-md-6.g-lg-4: .Card.reveal-js
 		h3.Card-title=title
 		if block
 			.Card-description
-				block
+				!=renderMarkdown(block)

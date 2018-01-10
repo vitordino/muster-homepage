@@ -3,108 +3,83 @@ include /_components/index
 +Hero('the best minds and capital for tech-driven companies')
 
 main
-	+Section('Where we can add value', 'We support companies through 7 main levers:')#value
-		.value-cards.g-row
-			.g-xs-12.g-md-6: +Value('Team Building', 'users')
-				:markdown
-					We provide a startup’s most important asset: **Human capital**.
-					One of our goals is to ensure great people find the best place.
+	+Section('Where we can add value', 'We support companies through 7 main levers:')#value: .value-cards.g-row
+		+Value('Team Building', 'users').
+			We provide a startup’s most important asset: **Human capital**.
+			One of our goals is to ensure great people find the best place.
 
-			.g-xs-12.g-md-6: +Value('Operations', 'activity')
-				:markdown
-					We enhance administrative, accounting, legal, and technological fields
-					by offering **Experts as a Service**.
+		+Value('Operations', 'activity').
+			We enhance administrative, accounting, legal, and technological fields
+			by offering **Experts as a Service**.
 
-			.g-xs-12.g-md-6: +Value('Perspective', 'crosshair')
-				:markdown
-					We leverage your product strategy — defining scope, target market and
-					competitive positioning. To provide **strategic counselling** and frank
-					feedback.
+		+Value('Perspective', 'crosshair').
+			We leverage your product strategy — defining scope, target market and
+			competitive positioning. To provide **strategic counselling** and frank
+			feedback.
 
-			.g-xs-12.g-md-6: +Value('Skill Building', 'layers')
-				:markdown
-					Building the right skills, especially for senior management. We
-					collected a portfolio of executives that lead world-class technology
-					companies. We also offer **coaching** as a key lever, with our own team or
-					through outside partners.
+		+Value('Skill Building', 'layers').
+			Building the right skills, especially for senior management. We
+			collected a portfolio of executives that lead world-class technology
+			companies. We also offer **coaching** as a key lever, with our own team or
+			through outside partners.
 
-			.g-xs-12.g-md-6: +Value('Costumer Development', 'user-plus')
-				:markdown
-					Identifying and gaining access to the **right customers**.
-					We have relationships with large global corporations. We maintain a
-					database of their needs — allowing us to identify early clients for
-					your company.
+		+Value('Costumer Development', 'user-plus').
+			Identifying and gaining access to the **right customers**.
+			We have relationships with large global corporations. We maintain a
+			database of their needs — allowing us to identify early clients for
+			your company.
 
-			.g-xs-12.g-md-6: +Value('Analysis', 'bar-chart-2')
-				:markdown
-					Knowing the right KPIs to track in a company is essential for its
-					success. We help entrepreneurs measure, understand, and report their
-					**performance**.
+		+Value('Analysis', 'bar-chart-2').
+			Knowing the right KPIs to track in a company is essential for its
+			success. We help entrepreneurs measure, understand, and report their
+			**performance**.
 
-			.g-xs-12.g-md-6: +Value('Network', 'globe')
-				:markdown
-					Providing access to contact networks — particularly to other **potential
-					investors** — is one of the cheapest and most value-added
-					services an investor can provide. We organize events in our community
-					and have regular meetings with accelerators, VCs and enterprise
-					clients.
+		+Value('Network', 'globe').
+			Providing access to contact networks — particularly to other **potential
+			investors** — is one of the cheapest and most value-added
+			services an investor can provide. We organize events in our community
+			and have regular meetings with accelerators, VCs and enterprise clients.
 
+	+Section('Consultancy Services')#consultancy.-mid: .consultancy-cards.g-row
+		+Card('Funding').
+			**Connect startups with Capital**
+			- Business Plan Review
+			- Due Diligence
+			- Pitch Coach
+			- Introduction to Investors
 
+		+Card('Business Development').
+			**Create long-term value with customers, markets, and relationships**
+			- Lead Generation
+			- Sales Representative
+			- Business Support
 
-	+Section('Consultancy Services')#consultancy.-mid
-		.consultancy-cards.g-row
+		+Card('Strategy').
+			**Set a clear roadmap to your goals**
+			- Mentoring
+			- Market Research
+			- Product Fit / Competitive Positioning
+			- Scenario analysis & Future Trends
 
-				.g-xs-12.g-md-6.g-lg-4: +Card('Funding')
-					:markdown
-						**Connect startups with Capital**
+		+Card('Talent & Soft Landing').
+			**Find specialists, leaders, or future executives**
+			- Expert as a Service
+			- Local and International Talent
+			- Fast Track Landing Services
 
-						- Business Plan Review
-						- Due Diligence
-						- Pitch Coach
-						- Introduction to Investors
+		+Card('Deal Flow').
+			**Find the Best Business investment offer**
+			- For Corporations
+			- Accelerator
+			- Business Angels
+			- Venture Capitals
 
-				.g-xs-12.g-md-6.g-lg-4: +Card('Business Development')
-					:markdown
-						**Create long-term value with customers, markets, and relationships**
-
-						- Lead Generation
-						- Sales Representative
-						- Business Support
-
-				.g-xs-12.g-md-6.g-lg-4: +Card('Strategy')
-					:markdown
-						**Set a clear roadmap to your goals**
-
-						- Mentoring
-						- Market Research
-						- Product Fit / Competitive Positioning
-						- Scenario analysis & Future Trends
-
-				.g-xs-12.g-md-6.g-lg-4: +Card('Talent & Soft Landing')
-					:markdown
-						**Find specialists, leaders, or future executives**
-
-						- Expert as a Service
-						- Local and International Talent
-						- Fast Track Landing Services
-
-				.g-xs-12.g-md-6.g-lg-4: +Card('Deal Flow')
-					:markdown
-						**Find the Best Business investment offer**
-
-						- For Corporations
-						- Accelerator
-						- Business Angels
-						- Venture Capitals
-
-				.g-xs-12.g-md-6.g-lg-4: +Card('Event Growth')
-					:markdown
-						**Engage and Create Community**
-
-						- Brand Awareness & Target Audience
-						- Growth Hacking Marketing
-						- Promote Online and Offline
-						- Press Releases, Photo, Video
+		+Card('Event Growth').
+			**Engage and Create Community**
+			- Brand Awareness & Target Audience
+			- Growth Hacking Marketing
+			- Promote Online and Offline
+			- Press Releases, Photo, Video
 
 	+Section('Contact', 'By partnering with Muster, your company will receive constant attention, even when yours is pulled elsewhere.')#contact
 		.g-row.Contact-layout

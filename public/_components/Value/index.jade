@@ -1,5 +1,5 @@
 mixin Value(title, icon)
-	.Value.reveal-js
+	.g-xs-12.g-md-6: .Value.reveal-js
 		.Value-header
 			.Value-icon
 				+FeatherIcon(icon)
@@ -7,4 +7,4 @@ mixin Value(title, icon)
 
 		if block
 			.Value-description
-				block
+				!=renderMarkdown(block)
