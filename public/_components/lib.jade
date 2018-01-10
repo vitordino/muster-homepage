@@ -1,2 +1,15 @@
--const require = module => process.mainModule.require(module)
-- toArray = x => Array.isArray(x) ? x : [x]
+-
+	const require = module => process.mainModule.require(module)
+	const toArray = x => Array.isArray(x) ? x : [x]
+	const md = require('jstransformer')(require('jstransformer-markdown-it'))
+	const renderMarkdown = block => {
+		const fn = [
+				'const buf = []',
+				`const jade_debug = ${JSON.stringify(jade_debug)}`,
+				`(${block.toString()})()`,
+				'buf.join("")',
+		].join(';\n')
+		const content = eval(fn)
+		return md.render(content).body
+	}
+-
