@@ -3,15 +3,14 @@
 		"site": {
 			"title": "Muster Ventures",
 			"description": "the best minds and capital for tech-driven companies",
-			"email": "hello@musterventures.com",
+			"email": "hello@muster.vc",
 			"analytics": "UA-112026228-1",
 			"facebook": null,
 			"instagram": null,
 			"twitter": "MusterVentures",
 			"whatsapp": null,
-			"github": null,
-			"gitlab": null,
-			"codepen": null
+			"linkedin": null,
+			"github": null
 		}
 	}
 }

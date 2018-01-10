@@ -14,9 +14,27 @@ mixin NavBar({social, tag = 'nav'} = {})
 
 mixin Footer()
 	footer.Footer
-		.container.Footer-container
-			a.Footer-logo(href='/')
-				include /assets/images/logo.svg
-			ul.Footer-links
-				li: a(href='tel:+34628210638') +34 628 210 638
-				li: a(href='mailto:hello@musterventures.com') hello@musterventures.com
+		.container
+			.Footer-container
+				a.Footer-logo(href='/')
+					include /assets/images/logo.svg
+				ul.Footer-social
+					if site.email
+						li: a.email(href='mailto:#{site.email}'): +FeatherIcon('mail')
+					if site.facebook
+						li: a.facebook(href='http://fb.com/#{site.facebook}'): +FeatherIcon('facebook')
+					if site.instagram
+						li: a.instagram(href='http://instagram.com/#{site.instagram}'): +FeatherIcon('instagram')
+					if site.twitter
+						li: a.twitter(href='http://twitter.com/#{site.twitter}'): +FeatherIcon('twitter')
+					if site.github
+						li: a.github(href='http://github.com/#{site.github}'): +FeatherIcon('github')
+					if site.linkedin
+						li: a.linkedin(href='http://linkedin.io/#{site.linkedin}'): +FeatherIcon('linkedin')
+					if site.whatsapp
+						li: a.whatsapp(href='https://api.whatsapp.com/send?phone=#{site.whatsapp}'): +FeatherIcon('zap')
+			.Footer-container
+
+				ul.Footer-links
+					li: a(href='tel:+34628210638') +34 628 210 638
+					li: a(href='mailto:#{site.email}')=site.email

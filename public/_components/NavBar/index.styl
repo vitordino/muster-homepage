@@ -58,7 +58,11 @@
 		opacity 1
 
 .Footer-container
-	display: block;
+	display: flex;
+	align-items: center;
+	& + .Footer-container
+		padding-top: 0
+		background: none
 
 .Footer-links
 	display: block;
@@ -68,6 +72,23 @@
 		+above(lg)
 			padding: 2rem 0
 
+.Footer-social
+	display: flex;
+	li
+		display: block;
+		opacity: 0.44
+		transition: 0.2s all
+		:hover
+			opacity: 1
+	a
+		display: block;
+		padding: 1rem
+	svg
+		stroke-width: 1.75
+		display: block;
+		height: 1.25rem
+
+
 +above(lg)
 	.Footer-container, .Footer-links
 		display: flex;
@@ -75,7 +96,3 @@
 			margin-left: 2rem
 	.Footer-logo
 		flex 1
-	.Footer-links
-		flex 2
-		li
-			flex 1
