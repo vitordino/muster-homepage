@@ -15,3 +15,11 @@
 		margin-top: 1rem
 		font-size: $size-4
 		line-height: $size-1
+	p+ul
+		margin-top: 0.75rem
+	li
+		:before
+			content '•'
+			color: alpha($color-brand, 0.44)
+			font-size: 0.875rem
+			margin-right: 0.5rem
