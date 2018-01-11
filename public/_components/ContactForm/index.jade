@@ -8,7 +8,7 @@ mixin ContactFormInput({name, label, type = 'text', textarea = false})
 
 mixin ContactForm()
 	.ContactForm
-		form.ContactForm-form(name='contact' action='action' method='post' data-netlify='true' data-netlify-honeypot='hid')
+		form.ContactForm-form(name='contact' action='/success' method='post' data-netlify='true' data-netlify-honeypot='hid')
 			input.-display-none(name='hid')
 			.ContactForm-section
 				+ContactFormInput({name: 'name', label: 'name'})
