@@ -1,5 +1,5 @@
 -
-	global.require = module => process.mainModule.require(module)
+	require = module => process.mainModule.require(module)
 	const fs = require('fs')
 	const path = require('path')
 	const readdirRecursive = require('fs-readdir-recursive')
