@@ -1,4 +1,7 @@
+include /_frontmatter/index
 include /_components/index
+
+- const {current: {hero}} = frontmatter
 
 doctype
 html(lang='en')
@@ -26,7 +29,11 @@ html(lang='en')
 		script!=`gtag('config', '${site.analytics}')`
 
 	body
-		!= yield
+		if hero
+			+Hero(hero)
+		if yield
+			main!= yield
+		+Footer()
 		if process.env.NODE_ENV === 'production'
 			script(src='/bundle.min.js')
 		else

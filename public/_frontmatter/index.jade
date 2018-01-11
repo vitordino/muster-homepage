@@ -1,0 +1,162 @@
+-
+	global.require = module => process.mainModule.require(module)
+	const fs = require('fs')
+	const path = require('path')
+	const readdirRecursive = require('fs-readdir-recursive')
+	const fp = require('lodash/fp')
+	const PugLexer = require('pug-lexer')
+	const PugParser = require('pug-parser')
+	const SEP = '---'
+	const _v_ = fp.__
+	const createAssociativeArray = (path, value) => {
+		var parts = path.split('.');
+		var last = parts[parts.length - 1];
+		var tree = {};
+
+		var node = parts.slice(0, -1).reduce(function (memo, current) {
+			return (memo[current] = {});
+		}, tree);
+
+		node[last] = value;
+		return tree;
+	}
+
+	const setValue = (path, value, object) => fp.merge(object, createAssociativeArray(path, value))
+	const isJade = a => path.extname(a) === '.jade'
+	const includeFile = fp.allPass([
+		filename => filename !== 'node_modules',
+		filename => filename[0] !== '.',
+		filename => filename[0] !== '_',
+	])
+
+	const listFiles = path => readdirRecursive(path, includeFile)
+
+	const takeWhileMatches = fp.flow([
+		fp.map(fp.matches),
+		fp.anyPass,
+		fp.takeWhile,
+	])
+	const parseValuesByInitial = {
+		'[': value => value.slice(1, -1).split(', ').map(parseValue),
+	}
+
+	const merge = objects => objects.length
+		? Object.assign({}, ...objects)
+		: {}
+
+	const lineToPair = fp.flow([
+		line => fp.tail(line.match(/^([^: ]+)\s*:?\s*([^:].+)$/)),
+		fp.map(fp.trim),
+		([key, value]) => [fp.camelCase(key) , value],
+	])
+	const parseValue = value => {
+		const fn = parseValuesByInitial[value[0]]
+		if(fn) return fn(value)
+		const isBoolean = (value === 'true' || value === 'false')
+		if(isBoolean) return value !== 'false'
+		const num = fp.toNumber(value)
+		if(num == value) return num
+		return value.replace(/^\\/, '')
+	}
+	const aggrupateByLine = fp.reduce((grouped, node) => {
+		const lastGroup = (fp.last(grouped) || [])
+		const lastElement = fp.last(lastGroup) || {line: fp.first(node).line-1}
+
+		const isAdjacent = fp.first(node).line === lastElement.line + 1
+		const isGrouped = fp.trim(lastElement.val) !== SEP
+
+		return (isAdjacent && isGrouped)
+			? [...(fp.initial(grouped) || []), [...lastGroup, ...node]]
+			: [...grouped, node]
+	}, [])
+	const trimValue = fp.flow([fp.get('val'), fp.trim])
+
+	const getFileFrontMatter = fp.flow([
+		path => fs.readFileSync(path, 'utf8'),
+		PugLexer,
+		PugParser,
+		fp.get('nodes'),
+		takeWhileMatches([{type: 'BlockComment'}, {type: 'Comment'}]),
+		fp.flatMap(node =>
+			node.type === 'BlockComment'
+				? fp.filter(trimValue)(node.block.nodes)
+				: [node]
+		),
+		fp.map(fp.castArray),
+		aggrupateByLine,
+		fp.map(fp.map(trimValue)),
+		fp.filter(
+			fp.allPass([
+				fp.size,
+				fp.flow(fp.last, fp.isEqual(SEP)),
+			])
+		),
+		fp.map(
+			fp.flow([
+				fp.filter(fp.negate(fp.isEqual(SEP))),
+				fp.map(lineToPair),
+				fp.fromPairs,
+			])
+		),
+		merge,
+		fp.mapValues(parseValue),
+	])
+	const fromNestedPairs = fp.reduce((object, [path, value]) => setValue(path, value, object), {})
+	const filenameToObjectPath = filename => filename
+		.split('.')
+		.slice(0, -1)
+		.join('.')
+		.split(path.sep)
+		.join('.')
+		.replace(/\.index$/, '')
+
+	const filenameToLink = filename => filename
+		.split(path.sep)
+		.join('/')
+		.replace(/\.jade$/, '')
+		.replace(/index$/, '')
+		.replace(/^/, '/')
+
+	const getContents = fp.flow([
+		fp.replace(/\/index.jade$/, ''),
+		fp.split(path.sep),
+		fp.concat(_v_, '_contents'),
+		fp.join('.'),
+		fp.getOr([]),
+	])
+
+	const filenameToSource = filename => (
+		fp.endsWith('index.jade')(filename)
+			? fp.flow([path.dirname, path.basename])(filename)
+			: path.basename(filename, '.jade')
+	)
+
+	const getFrontmatter = (current, metadata) => {
+		if(!metadata){
+			throw new Error('[Frontmatter]: missing public argument')
+		}
+		const __dirname = process.cwd()
+		const public = `${__dirname}/public`
+		const pointer = current && current.join('.').replace(/\.index$/, '')
+		return fp.flow([
+			listFiles,
+			fp.filter(isJade),
+			fp.map(filename => ([
+				filenameToObjectPath(filename),
+				Object.assign(
+					{
+						__source: filenameToSource(filename),
+						__filename: `public${path.sep}${filename}`,
+						__path: filenameToObjectPath(filename),
+						__link: filenameToLink(filename),
+						__contents: getContents(filename)(metadata),
+					},
+					getFileFrontMatter(path.join(public, filename))
+				),
+			])),
+			fromNestedPairs, // [TODO]: implement re-sorting the object keys
+			public => ({public, current: fp.getOr({}, pointer)(public)}),
+		])(public)
+	}
+	const frontmatter = getFrontmatter(current.path, public)
+-
