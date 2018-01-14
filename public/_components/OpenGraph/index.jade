@@ -24,9 +24,8 @@ mixin OpenGraph(base, site, {current})
 	meta(property='og:image:height' content=630)
 
 	meta(name='twitter:card' content='summary')
-	meta(name='twitter:site' content='kunstdesign')
-	meta(name='twitter:creator' content='kunstdesign')
+	meta(name='twitter:site' content=site.twitter)
+	meta(name='twitter:creator' content=site.twitter)
 	meta(name='twitter:title' content=page.title)
 	meta(name='twitter:description' content=page.description)
-	if hasImage
-		meta(name='twitter:image' content=imageUrl)
+	meta(name='twitter:image' content=imageUrl)
