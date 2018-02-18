@@ -33,8 +33,3 @@ mixin Footer()
 						li: a.linkedin(href='https://linkedin.com/company/#{site.linkedin}'): +FeatherIcon('linkedin')
 					if site.whatsapp
 						li: a.whatsapp(href='https://api.whatsapp.com/send?phone=#{site.whatsapp}'): +FeatherIcon('zap')
-			.Footer-container
-
-				ul.Footer-links
-					li: a(href='tel:+34628210638') +34 628 210 638
-					li: a(href='mailto:#{site.email}')=site.email
