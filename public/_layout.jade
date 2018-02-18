@@ -43,6 +43,7 @@ html(lang='en')
 		if process.env.NODE_ENV === 'production'
 			script(src='/bundle.min.js')
 		else
+			script(src='/assets/scripts/decode.js')
 			script(src='/assets/scripts/geometry.js')
 			script(src='/assets/scripts/moebius.js')
 			script(src='/assets/scripts/scrollreveal.min.js')
@@ -50,6 +51,8 @@ html(lang='en')
 
 		script.
 			moebius()
+
+			linkDecode(document.querySelectorAll('a[data-encoded-link]'))
 
 			window.sr = ScrollReveal({
 				duration: 16*56,

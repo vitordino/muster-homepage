@@ -1,3 +1,9 @@
+mixin EncodedLink({href, hash = ''})
+	-const encode = fp.flow([fp.map(char => char.charCodeAt(0)), fp.join(',')])
+	a(href='#'+hash.replace(/ /g, '_') data-encoded-link=encode(href))&attributes(attributes)
+		if block
+			block
+
 mixin NavBar({social, tag = 'nav'} = {})
 	#{tag}.NavBar&attributes(attributes)
 		.NavBar-container.container
@@ -20,9 +26,11 @@ mixin Footer()
 					include /assets/images/logo.svg
 				ul.Footer-social
 					if site.phone
-						li: a.phone(href='tel:#{site.phone}'): +FeatherIcon('phone')
+						-const _phone = {href: `tel:${site.phone}`, hash: 'click to call'}
+						li: +EncodedLink(_phone).phone: +FeatherIcon('phone')
 					if site.email
-						li: a.email(href='mailto:#{site.email}'): +FeatherIcon('mail')
+						-const _email = {href: `mailto:${site.email}`, hash: 'click to send an email'}
+						li: +EncodedLink(_email).email: +FeatherIcon('mail')
 					if site.facebook
 						li: a.facebook(href='https://fb.com/#{site.facebook}'): +FeatherIcon('facebook')
 					if site.instagram
@@ -34,4 +42,5 @@ mixin Footer()
 					if site.linkedin
 						li: a.linkedin(href='https://linkedin.com/company/#{site.linkedin}'): +FeatherIcon('linkedin')
 					if site.whatsapp
-						li: a.whatsapp(href='https://api.whatsapp.com/send?phone=#{site.whatsapp}'): +FeatherIcon('zap')
+						-const _whatsapp = {href: `https://api.whatsapp.com/send?phone=${site.whatsapp}`, hash: 'click to open whatsapp'}
+						li: +EncodedLink(_whatsapp).whatsapp: +FeatherIcon('zap')
