@@ -19,6 +19,8 @@ mixin Footer()
 				a.Footer-logo(href='/')
 					include /assets/images/logo.svg
 				ul.Footer-social
+					if site.phone
+						li: a.phone(href='tel:#{site.phone}'): +FeatherIcon('phone')
 					if site.email
 						li: a.email(href='mailto:#{site.email}'): +FeatherIcon('mail')
 					if site.facebook
