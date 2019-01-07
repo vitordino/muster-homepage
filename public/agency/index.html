@@ -5,7 +5,7 @@
 	<title>Muster Agency – Strategy Consulting Services</title>
 	<meta content="End to End Strategy Consulting Services" name="description">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<link href='https://d33wubrfki0l68.cloudfront.net/css/0ddf09a1b2e58d7d6db7a6b46684d0b01645a1b0/main.css' rel='stylesheet'>
+	<link href='/main.css' rel='stylesheet'>
 	<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
 	<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
 	<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
@@ -28,9 +28,9 @@
 	<meta content="Strategy Consulting Services" property="og:description">
 	<meta content="website" property="og:type">
 	<meta content="en_US" property="og:locale">
-	<meta content="https://agency.muster.vc" property="og:url">
-	<meta content="https://agency.muster.vc/assets/images/og-image.png" property="og:image">
-	<meta content="https://agency.muster.vc/assets/images/og-image.png" property="og:image:url">
+	<meta content="https://muster.vc" property="og:url">
+	<meta content="https://muster.vc/assets/images/og-image.png" property="og:image">
+	<meta content="https://muster.vc/assets/images/og-image.png" property="og:image:url">
 	<meta content="image/png" property="og:image:type">
 	<meta content="1200" property="og:image:width">
 	<meta content="630" property="og:image:height">
@@ -46,7 +46,7 @@
 </head>
 <body>
 	<div class="Hero -brand">
-		<nav class="NavBar" style="padding-bottom: 3rem">
+		<nav class="NavBar">
 			<div class="NavBar-container container">
 				<a class="NavBar-left" href="/">
 				<div class="NavBar-logo">
@@ -67,7 +67,7 @@
 				</a>
 				<ul class="NavBar-links">
 					<li class="-md-hide">
-						<a href="#">agency</a>
+						<a href="/agency">agency</a>
 					</li>
 					<li class="-md-hide">
 						<a href="/#value">value</a>
@@ -81,6 +81,13 @@
 				</ul>
 			</div>
 		</nav>
+		<div>
+			<div class="container Hero-container">
+				<h1 class="Hero-title appear-css"><br><br></h1>
+				<div class="Hero-definition"></div>
+			</div>
+			<h1 data-dancing-text>agency</h1>
+		</div>
 	</div>
 	<main>
 		<section class="Section" id="agency">
@@ -211,8 +218,8 @@
 	</footer>
 	<script src='https://d33wubrfki0l68.cloudfront.net/js/11e080702d8ce00ee007143e457d7fc8a61031a0/bundle.min.js'>
 	</script>
+	<script src='/assets/scripts/dancing-text.js'></script>
 	<script>
-	moebius()
 
 	linkDecode(document.querySelectorAll('a[data-encoded-link]'))
 
